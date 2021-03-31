@@ -56,9 +56,6 @@ public class OverlayService extends Service {
             }
         });
 
-        @Override
-        mTopView.dispatchTouchEvent()
-
         mTopView.setOnClickListener(new View.OnClickListener() {
 
             @Override
