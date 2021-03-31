@@ -16,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 public class OverlayService extends Service {
+
+    public static String TAG = "Sebverlay";
     public OverlayService() {
     }
 
@@ -33,20 +35,12 @@ public class OverlayService extends Service {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.TOP | Gravity.LEFT;
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View mTopView = inflater.inflate(R.layout.fullscreen_overlay, null);
-
-        mTopView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.d("seb-touch", event.toString());
-                return false;
-            }
-        });
 
         mTopView.setOnGenericMotionListener(new View.OnGenericMotionListener() {
             @Override
@@ -56,11 +50,19 @@ public class OverlayService extends Service {
             }
         });
 
+        mTopView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("seb-touch", event.toString());
+                return false;
+            }
+        });
+
         mTopView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Log.d("seb-generic", v.toString());
+                Log.d("seb-click", v.toString());
             }
         });
 

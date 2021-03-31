@@ -10,7 +10,7 @@
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activate Acessibility"
+        android:text="Activate Overlay"
         tools:layout_editor_absoluteX="150dp"
         tools:layout_editor_absoluteY="276dp" />
 
