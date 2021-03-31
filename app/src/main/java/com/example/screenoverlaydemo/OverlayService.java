@@ -1,5 +1,6 @@
 package com.example.screenoverlaydemo;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -23,19 +24,16 @@ public class OverlayService extends Service {
         return null;
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     public void onCreate() {
         super.onCreate();
 
-        // For FULLSCREEN OVERLAY
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                50,
-                50,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-//                WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY,
-//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH |
-                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.TOP | Gravity.LEFT;
 
@@ -57,13 +55,22 @@ public class OverlayService extends Service {
                 return false;
             }
         });
-//        mTopView.setOn
+
+        @Override
+        mTopView.dispatchTouchEvent()
+
+        mTopView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.d("seb-generic", v.toString());
+            }
+        });
 
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
 
         wm.addView(mTopView, params);
 
-        // Fin FULLSCREEN OVERLAY
     }
 
     @Override

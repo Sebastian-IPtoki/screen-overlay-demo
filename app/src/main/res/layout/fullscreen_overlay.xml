@@ -6,7 +6,7 @@
     android:layout_width="20dp"
     android:layout_height="20dp"
     android:layout_gravity="top"
-    android:background="#80403D58"
+    android:background="#00403D58"
     tools:context=".MainActivity">
 
     <TextView
