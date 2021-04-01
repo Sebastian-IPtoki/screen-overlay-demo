@@ -6,12 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activate Overlay"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="276dp" />
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sebview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
